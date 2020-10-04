@@ -19,6 +19,14 @@ app.post('/create', (req, res) => {
   res.send(props)
 })
 
+app.post('/register', (req, res) => {
+  const props = games.registerUser(
+    req.body.gameId,
+    req.body.name
+  )
+  res.send(props)
+})
+
 app.post('/start', (req, res) => {
   games.startGame(
     req.body.gameId,
@@ -48,3 +56,4 @@ wss.on('connection', (ws, req) => {
 })
 
 server.listen(3000)
+console.log('Server running on port 3000.')
